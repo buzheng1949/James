@@ -9,7 +9,7 @@
 import Article from './Article.vue'
 import Search from './Search.vue'
 export default {
-  name:"container",
+  name:"home",
   data:function(){
     return{
       message:'this is the container'
