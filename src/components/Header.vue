@@ -3,7 +3,7 @@
     <nav v-bind:class="{navgationbar:true}">
       <ul v-bind:class="{menu:true}">
         <li v-for="title in titles" v-bind:class="{title:true,logo:title.isLogo}" @mouseover="toggleShow()" >
-          <a href="#" v-bind:class="{href:true}">
+          <a v-bind:href="title.href">
             <span v-bind:class="{focus:title.isLogo}">{{title.label}}</span>
           </a>
         </li>
@@ -20,17 +20,20 @@ export default {
       titles :[
         {
           label:'关于',
-          isLogo:false
+          isLogo:false,
+          href:'/#about'
         }
         ,
         {
           label:'分类',
-          isLogo:false
+          isLogo:false,
+          href:'/#categories'
         }
         ,
         {
           label:'首页',
-          isLogo:false
+          isLogo:false,
+          href:''
         }
         ,
         {
@@ -56,7 +59,7 @@ export default {
 </script>
 
 <style lang="css">
-.href{
+nav ul li a{
   font-family: Arial, "Hiragino Sans GB", 冬青黑, "Microsoft YaHei", 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, "Arial sans-serif";
   display: block;
   font-size: 1rem;
