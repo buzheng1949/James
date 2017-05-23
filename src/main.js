@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import Home from './components/Home'
 import Router from 'vue-router'
-import Hello from './components/Hello'
+import Category from './components/Category'
+import About from './components/About'
 // import router from './router'
 import $ from 'jquery'
 import VueResource from 'vue-resource'
@@ -15,7 +16,8 @@ Vue.config.productionTip = false
 
 const routes = [
     { path: '/', component:  Home },
-    { path: '/hello', component: Hello },
+    { path: '/categories', component: Category },
+    { path: '/about', component: About }
 ]
 
 const router = new Router({
