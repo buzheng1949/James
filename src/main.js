@@ -6,8 +6,10 @@ import Home from './components/Home'
 import Router from 'vue-router'
 import Category from './components/Category'
 import About from './components/About'
+import ArticleDetail from './components/ArticleDetail'
 // import router from './router'
 import $ from 'jquery'
+import showdown from 'showdown'
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
 Vue.use(Router)
@@ -17,7 +19,8 @@ Vue.config.productionTip = false
 const routes = [
     { path: '/', component:  Home },
     { path: '/categories', component: Category },
-    { path: '/about', component: About }
+    { path: '/about', component: About },
+    { path: '/articledetail', component: ArticleDetail}
 ]
 
 const router = new Router({

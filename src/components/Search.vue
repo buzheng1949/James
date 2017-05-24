@@ -10,7 +10,7 @@
         <div id="serach_result">
             <ul id="search_result_content">
               <li v-for="article in result">
-                <a href="#">{{article.title}}</a>
+                <a v-bind:href="article.href">{{article.title}}</a>
               </li>
             </ul>
         </div>
@@ -24,6 +24,7 @@ export default {
   data:function () {
     return{
       message:'',
+      articleurl:"/#articledetail?article=",
       url:'https://api.github.com/repos/buzheng1949/buzheng1949.github.io/issues',
       result:[],
       search:'搜索',
@@ -36,7 +37,7 @@ export default {
       for (var i = 0; i < Utils.getJsonLength(response.data.data); i++) {
         var issue = response.data.data[i]
         var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
-        var href = issue.articleurl+id
+        var href = this.articleurl+id
         var title = issue.title
         var href = issue.html_url
         this.articles.push({
@@ -55,11 +56,11 @@ export default {
       }
       for(let article of this.articles){
         if (article.title.search(this.message) != -1) {
-          var id = article.href.toString().charAt(article.href.toString().length-1);
-          var href = article.href+id
+          var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
+          var href = this.articleurl+id
           var title = article.title
           this.result.push({
-            href:'#',
+            href:href,
             title:title
           })
         }

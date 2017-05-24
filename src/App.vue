@@ -2,7 +2,8 @@
   <div id="app">
 
     <Header></Header>
-    <router-view class="container"></router-view>
+    <router-view class="container">
+    </router-view>
     <!-- <Home></Home> -->
     <Footer></Footer>
   </div>
@@ -34,7 +35,7 @@ export default {
     width: 900px;
     padding-left: 20px;
     padding-right: 20px;
-    max-height: 1382px;
+    max-height: none;
     position: relative;
     overflow: hidden;
     margin: 0px auto;
