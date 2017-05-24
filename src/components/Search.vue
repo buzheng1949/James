@@ -4,7 +4,7 @@
         <!--搜索以及结果显示-->
         <div id="site_search">
             <input id="search_box" placeholder="Search" v-model="message">
-            <button v-on:click="greet">搜索</button>
+            <button v-on:click="greet">{{search}}</button>
         </div>
         <!--动态生成结果-->
         <div id="serach_result">
@@ -47,9 +47,7 @@ export default {
     })
   },
   methods:{
-    getJsonLength:function(json){
-      // return Utils.getJsonLength(json);
-    },
+
     greet:function () {
       this.result = []
       if(this.message ===''){

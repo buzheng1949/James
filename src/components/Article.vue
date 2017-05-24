@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import Utils from '../js/Utils.js'
 export default {
   name:'article',
   data:function () {
@@ -35,7 +36,7 @@ export default {
   methods:{
     setArticleMessage:function () {
       this.$http.jsonp(this.url).then((response) => {
-        for (var i = 0; i < this.getJsonLength(response.data.data); i++) {
+        for (var i = 0; i < Utils.getJsonLength(response.data.data); i++) {
           var issue = response.data.data[i]
           var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
           var href = issue.articleurl+id
