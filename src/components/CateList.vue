@@ -5,7 +5,7 @@
         <ol class="categories-list">
           <li class="categories-list-item" v-for="article in articles" v-if='article.type == articleType.type' >
             <span class="categories-list-item-time">2017-04-01</span>
-            <a class="categories-list-item-name" href="article.html?issueid=5">{{article.title}}</a>
+            <a class="categories-list-item-name" v-bind:href="article.href">{{article.title}}</a>
           </li>
         </ol>
       </div>
@@ -19,6 +19,7 @@ export default {
     return{
       message:'helloworld',
       seen:true,
+      articleurl:"/#articledetail?article=",
       categories_url : "https://api.github.com/repos/buzheng1949/buzheng1949.github.io/milestones",
       issues_url : "https://api.github.com/repos/buzheng1949/buzheng1949.github.io/issues",
       articleTypes:[
@@ -62,13 +63,14 @@ export default {
       for (var i = 0; i < this.getJsonLength(response.data.data); i++) {
         var issue = response.data.data[i]
         var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
+        var href = this.articleurl+id
         var title = issue.title
         var des = issue.body.toString().substring(0, issue.body.toString().indexOf("\r\n"))
         var time = issue.created_at.toString().substring(0, 10);
         var type = issue.milestone.title;
         console.log(name,des,time,type)
         this.articles.push({
-          href:'#',
+          href:href,
           title:title,
           time:time,
           type:type

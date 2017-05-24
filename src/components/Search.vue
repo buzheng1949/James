@@ -4,13 +4,13 @@
         <!--搜索以及结果显示-->
         <div id="site_search">
             <input id="search_box" placeholder="Search" v-model="message">
-            <button v-on:click="greet">搜索</button>
+            <button v-on:click="greet">{{search}}</button>
         </div>
         <!--动态生成结果-->
         <div id="serach_result">
             <ul id="search_result_content">
               <li v-for="article in result">
-                <a href="#">{{article.title}}</a>
+                <a v-bind:href="article.href">{{article.title}}</a>
               </li>
             </ul>
         </div>
@@ -24,6 +24,7 @@ export default {
   data:function () {
     return{
       message:'',
+      articleurl:"/#articledetail?article=",
       url:'https://api.github.com/repos/buzheng1949/buzheng1949.github.io/issues',
       result:[],
       search:'搜索',
@@ -36,7 +37,7 @@ export default {
       for (var i = 0; i < Utils.getJsonLength(response.data.data); i++) {
         var issue = response.data.data[i]
         var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
-        var href = issue.articleurl+id
+        var href = this.articleurl+id
         var title = issue.title
         var href = issue.html_url
         this.articles.push({
@@ -47,9 +48,7 @@ export default {
     })
   },
   methods:{
-    getJsonLength:function(json){
-      // return Utils.getJsonLength(json);
-    },
+
     greet:function () {
       this.result = []
       if(this.message ===''){
@@ -57,11 +56,11 @@ export default {
       }
       for(let article of this.articles){
         if (article.title.search(this.message) != -1) {
-          var id = article.href.toString().charAt(article.href.toString().length-1);
-          var href = article.href+id
+          var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
+          var href = this.articleurl+id
           var title = article.title
           this.result.push({
-            href:'#',
+            href:href,
             title:title
           })
         }

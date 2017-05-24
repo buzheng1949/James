@@ -18,13 +18,14 @@
 </template>
 
 <script>
+import Utils from '../js/Utils.js'
 export default {
   name:'article',
   data:function () {
     return{
       message:'article',
       url:'https://api.github.com/repos/buzheng1949/buzheng1949.github.io/issues',
-      articleurl:"src/article.html?issueid=",
+      articleurl:"/#articledetail?article=",
       articles:[]
     }
   },
@@ -35,10 +36,10 @@ export default {
   methods:{
     setArticleMessage:function () {
       this.$http.jsonp(this.url).then((response) => {
-        for (var i = 0; i < this.getJsonLength(response.data.data); i++) {
+        for (var i = 0; i < Utils.getJsonLength(response.data.data); i++) {
           var issue = response.data.data[i]
           var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
-          var href = issue.articleurl+id
+          var href = this.articleurl+id
           var name = issue.title
           var des = issue.body.toString().substring(0, issue.body.toString().indexOf("\r\n"))
           var time = issue.created_at.toString().substring(0, 10);
