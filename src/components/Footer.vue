@@ -1,10 +1,10 @@
 <template lang="html">
   <div id="footer">
       <ul id="last">
-          <li id="last-item"><a class="myshow">@2017 buzheng1949</a></li>
-          <li id="last-item"><a >首页</a></li>
-          <li id="last-item"><a >分类</a></li>
-          <li id="last-item"><a >关于</a></li>
+          <li id="last-item"><a class="myshow" href='#'>@2017 yupeibiao</a></li>
+          <li id="last-item"><a href=''>首页</a></li>
+          <li id="last-item"><a href="/#categories">分类</a></li>
+          <li id="last-item"><a href="/#about">关于</a></li>
           <li id="last-item"><a href="javascript:window.scrollTo(0,0)">TOP</a></li>
       </ul>
   </div>
