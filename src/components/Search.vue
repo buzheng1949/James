@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import Utils from '../js/Utils.js'
 export default {
   name:'search',
   data:function () {
@@ -32,7 +33,7 @@ export default {
   created:function () {
     console.log('created again')
     this.$http.jsonp(this.url).then((response) => {
-      for (var i = 0; i < this.getJsonLength(response.data.data); i++) {
+      for (var i = 0; i < Utils.getJsonLength(response.data.data); i++) {
         var issue = response.data.data[i]
         var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
         var href = issue.articleurl+id
@@ -47,11 +48,7 @@ export default {
   },
   methods:{
     getJsonLength:function(json){
-      var jsonLength = 0;
-      for (var item in json) {
-          jsonLength++;
-      }
-      return jsonLength;
+      // return Utils.getJsonLength(json);
     },
     greet:function () {
       this.result = []
