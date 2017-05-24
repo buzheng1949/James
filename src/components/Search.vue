@@ -56,7 +56,7 @@ export default {
       }
       for(let article of this.articles){
         if (article.title.search(this.message) != -1) {
-          var id = issue.html_url.toString().charAt(issue.html_url.toString().length-1);
+          var id = article.href.toString().charAt(article.href.toString().length-1);
           var href = this.articleurl+id
           var title = article.title
           this.result.push({
